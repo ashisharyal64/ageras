@@ -34,7 +34,7 @@ class GameController extends Controller
     /**
      * @param GameRequest $request
      * @param string $piece
-     * @return JsonResource|JsonResource
+     * @return JsonResponse|JsonResource
      */
     public function piece(GameRequest $request, string $piece): JsonResponse|JsonResource
     {
@@ -68,7 +68,7 @@ class GameController extends Controller
     /**
      * @return JsonResource
      */
-    public function restart(): JsonResponse
+    public function restart(): JsonResource
     {
         // get the game
         $gameState = Game::firstOrFail();
