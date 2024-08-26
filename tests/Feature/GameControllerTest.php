@@ -4,7 +4,6 @@ namespace Tests\Feature;
 
 use App\Models\Game;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class GameControllerTest extends TestCase
@@ -19,7 +18,7 @@ class GameControllerTest extends TestCase
             'score_x' => 0,
             'score_o' => 0,
             'current_turn' => 'x',
-            'victory' => null
+            'victory' => null,
         ]);
     }
 
@@ -27,12 +26,12 @@ class GameControllerTest extends TestCase
     {
         $response = $this->get('/api');
         $response->assertStatus(200)
-        ->assertJsonStructure([
-            'board',
-            'score' => ['x', 'o'],
-            'currentTurn',
-            'victory'
-        ]);
+            ->assertJsonStructure([
+                'board',
+                'score' => ['x', 'o'],
+                'currentTurn',
+                'victory',
+            ]);
     }
 
     public function test_game_can_place_a_piece()
@@ -44,10 +43,10 @@ class GameControllerTest extends TestCase
                 'board',
                 'score' => ['x', 'o'],
                 'currentTurn',
-                'victory'
+                'victory',
             ])
-        ->assertJsonPath('board.0.0', 'x')
-        ->assertJsonPath('currentTurn', 'o');
+            ->assertJsonPath('board.0.0', 'x')
+            ->assertJsonPath('currentTurn', 'o');
     }
 
     public function test_game_can_be_restarted()
@@ -62,7 +61,7 @@ class GameControllerTest extends TestCase
                 'board',
                 'score' => ['x', 'o'],
                 'currentTurn',
-                'victory'
+                'victory',
             ])
             ->assertJsonPath('board.0.0', '')
             ->assertJsonPath('currentTurn', 'x');
@@ -78,10 +77,9 @@ class GameControllerTest extends TestCase
         $response = $this->deleteJson('/api');
         $response->assertStatus(200)
             ->assertJsonStructure([
-                'currentTurn'
+                'currentTurn',
             ])
             ->assertJsonPath('currentTurn', 'x');
-
 
     }
 

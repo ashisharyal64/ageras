@@ -12,4 +12,3 @@ Route::get('/', [GameController::class, 'index']);
 Route::post('/restart', [GameController::class, 'restart']);
 Route::post('/{piece}', [GameController::class, 'piece']);
 Route::delete('/', [GameController::class, 'destroy']);
-

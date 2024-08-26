@@ -14,7 +14,7 @@ class GameResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-//        return parent::toArray($request);
+        //        return parent::toArray($request);
         return [
             'board' => $this->board,
             'score' => [
@@ -22,9 +22,8 @@ class GameResource extends JsonResource
                 'o' => $this->score_o,
             ],
             'currentTurn' => $this->current_turn,
-            'victory' => $this->victory
+            'victory' => $this->victory,
         ];
-
 
     }
 }

@@ -14,11 +14,10 @@ class Game extends Model
         'score_x',
         'score_o',
         'current_turn',
-        'victory'
+        'victory',
     ];
 
     protected $casts = [
-        'board' => 'array'
+        'board' => 'array',
     ];
-
 }
